@@ -1,20 +1,18 @@
 import React from "react";
 import { CardCadastro } from "./pages/CardCadastro";
 //import { CardTitulo } from "./components/cadastro/Titulo";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CardLista } from "./pages/CardLista";
 
 function App() {
   return (
     <div>
-      <Router>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />}>
-            <Route path="cadastro" element={<CardCadastro />} />
-            <Route path="lista" element={<CardLista />} />
-          </Route>
+          <Route path="/" element={<CardCadastro />} />
+          <Route path="lista" element={<CardLista />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

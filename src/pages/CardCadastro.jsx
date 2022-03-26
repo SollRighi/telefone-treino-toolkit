@@ -4,6 +4,9 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { Titulo } from "../components/cadastro/Titulo";
+import { useDispatch } from "react-redux";
+import { adicionarContato } from "../redux/Slice";
+import { useState } from "react";
 
 export const StyleCadastro = styled.div`
   margin: 0;
@@ -16,10 +19,23 @@ export const StyleCadastro = styled.div`
 `;
 
 export const CardCadastro = (props) => {
+  const [nome, setNome] = useState("");
+  const [numero, setNumero] = useState("");
+
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function mudarPagina() {
+    dispatch(adicionarContato({ nome, numero }));
     navigate("lista");
+  }
+
+  function aoAlterarNome(e) {
+    setNome(e.target.value);
+  }
+
+  function aoAlterarNumero(e) {
+    setNumero(e.target.value);
   }
 
   return (
@@ -31,14 +47,16 @@ export const CardCadastro = (props) => {
           label="Nome"
           multiline
           maxRows={4}
-          //value={value}
-          //onChange={handleChange}
+          value={nome}
+          onChange={aoAlterarNome}
         />
         <TextField
           id="outlined-textarea"
           label="Telefone"
           placeholder="Placeholder"
           multiline
+          value={numero}
+          onChange={aoAlterarNumero}
         />
         <Button onClick={mudarPagina} variant="outlined">
           Salvar
