@@ -53,7 +53,7 @@ export const CardCadastro = (props) => {
         <TextField
           id="outlined-textarea"
           label="Telefone"
-          placeholder="Placeholder"
+          placeholder=""
           multiline
           value={numero}
           onChange={aoAlterarNumero}
