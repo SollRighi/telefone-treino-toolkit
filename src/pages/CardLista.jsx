@@ -33,7 +33,6 @@ export const CardLista = () => {
   const contatos = useSelector((store) => store.contatos);
   const navigate = useNavigate();
 
-  console.log(contatos);
   function irParaHome() {
     navigate("/");
   }
